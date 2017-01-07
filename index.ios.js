@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 import { Map } from './components/Map';
 import { List } from './components/List';
+import TabView from './components/TabView';
 import {
   AppRegistry,
   StyleSheet,
@@ -16,16 +17,39 @@ import {
 } from 'react-native';
 import {
   Router,
-  Scene
+  Scene,
+  Modal
 } from 'react-native-router-flux';
 
+class TabIcon extends React.Component {
+  render(){
+    return (
+      <Text style={{color: this.props.selected ? 'red' :'black'}}>{this.props.title}</Text>
+    );
+  }
+}
+
 export default class instore extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    }
+  }
   render() {
     return (
       <Router>
-        <Scene key='root'>
-          <Scene key='List' component={List} title='List' initial={true} />
-          <Scene key='Map' component={Map} title='Map' />
+        <Scene key='modal' component={Modal} >
+          <Scene key='root'>
+            <Scene key='tabbar' tabs={true} >
+              <Scene key='tab1' title='List View' icon={TabIcon} initial={true} >
+                <Scene key='List' title='List View Nav' component={List} />
+              </Scene>
+              <Scene key='tab2' title='Map View' icon={TabIcon}>
+                <Scene key='Map' title='Map View Nav' component={Map} />
+              </Scene>
+            </Scene>
+          </Scene>
         </Scene>
       </Router>
       // <NavigatorIOS
