@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import { Map } from './components/Map';
+import { List } from './components/List';
 import {
   AppRegistry,
   StyleSheet,
@@ -13,19 +14,30 @@ import {
   Text,
   NavigatorIOS
 } from 'react-native';
+import {
+  Router,
+  Scene
+} from 'react-native-router-flux';
 
 export default class instore extends Component {
   render() {
     return (
-      <NavigatorIOS
-        style={{
-          flex: 1
-        }}
-        initialRoute={{
-          component: Map,
-          title: 'Instore'
-        }}
-      />
+      <Router>
+        <Scene key='root'>
+          <Scene key='List' component={List} title='List' initial={true} />
+          <Scene key='Map' component={Map} title='Map' />
+        </Scene>
+      </Router>
+      // <NavigatorIOS
+      //   style={{
+      //     flex: 1
+      //   }}
+      //   initialRoute={{
+      //     component: Map,
+      //     title: 'Instore'
+      //   }}
+      //   // navigationBarHidden={true}
+      // />
     );
   }
 }
