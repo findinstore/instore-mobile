@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import { App } from './components/App';
+import { Map } from './components/Map';
 import {
   AppRegistry,
   StyleSheet,
@@ -22,7 +22,7 @@ export default class instore extends Component {
           flex: 1
         }}
         initialRoute={{
-          component: App,
+          component: Map,
           title: 'Instore'
         }}
       />

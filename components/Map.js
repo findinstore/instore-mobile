@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import MapView from 'react-native-maps';
 
-export class App extends Component {
+export class Map extends Component {
   render() {
     return (
       <View style={styles.container}>
