@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
-    justifyContent: 'center',
+    fontFamily: 'Quicksand-Regular',
   },
   productList: {
     flex: 1,

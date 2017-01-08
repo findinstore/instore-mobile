@@ -29,7 +29,7 @@ export class Search extends Component {
             <SearchBar />
           </View>
           <View style={styles.buttonContainer}>
-            <Button style={styles.button} onPress={Actions.tabbar}>Search</Button>
+            <Button containerStyle={{borderRadius: 20}} style={styles.button} onPress={Actions.tabbar}>Search</Button>
           </View>
         </View>
       </View>
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   searchBarContainer: {
     flex: 4,
-    borderRadius: 0,
+    borderRadius: 1,
     borderColor: 'rgba(0, 0, 0, 0)',
     borderBottomColor: '#F1F1F1',
     borderBottomWidth: 1,
