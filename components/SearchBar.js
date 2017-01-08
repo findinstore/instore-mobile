@@ -28,8 +28,6 @@ export class SearchBar extends Component {
 const styles = StyleSheet.create({
   searchBar: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'stretch',
-    backgroundColor: 'white',
+    fontSize: 18,
   },
 });

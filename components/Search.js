@@ -18,15 +18,18 @@ export class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      placeholder: 'What are you searching for?',
     };
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <SearchBar />
-        <Button onPress={Actions.tabbar}>Search Nearby Stores</Button>
+        <View style={styles.searchContainer}>
+          <SearchBar />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button style={styles.button} onPress={Actions.tabbar}>Search</Button>
+        </View>
       </View>
     );
   }
@@ -35,10 +38,21 @@ export class Search extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
-    marginTop: 70,
     backgroundColor: '#F5FCFF',
+    padding: 30,
+  },
+  searchContainer: {
+    flex: 3,
+  },
+  buttonContainer: {
+    flex: 1,
+  },
+  button: {
+    backgroundColor: 'blue',
+    color: 'white',
+    fontSize: 18,
   },
 });
