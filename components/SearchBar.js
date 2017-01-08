@@ -4,6 +4,9 @@ import {
   View,
   TextInput,
 } from 'react-native';
+import {
+  Actions,
+} from 'react-native-router-flux';
 
 export class SearchBar extends Component {
   constructor(props) {
@@ -11,6 +14,13 @@ export class SearchBar extends Component {
     this.state = {
       placeholder: 'What are you searching for?',
     };
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
+
+  handleKeyDown(e) {
+    if (e.nativeEvent.key === 'Enter') {
+      Actions.tabbar();
+    }
   }
 
   render() {
@@ -18,6 +28,7 @@ export class SearchBar extends Component {
       <TextInput
         style={styles.searchBar}
         onChangeText={(text) => this.setState({ placeholder: text })}
+        onKeyPress={this.handleKeyDown}
         value={this.state.placeholder}
         editable={true}
       />
