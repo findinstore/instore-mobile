@@ -1,13 +1,8 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import { Map } from './components/Map';
 import { List } from './components/List';
-import TabView from './components/TabView';
+import { Search } from './components/Search';
+
 import {
   AppRegistry,
   StyleSheet,
@@ -18,7 +13,8 @@ import {
 import {
   Router,
   Scene,
-  Modal
+  Modal,
+  Actions,
 } from 'react-native-router-flux';
 
 class TabIcon extends React.Component {
@@ -41,8 +37,9 @@ export default class instore extends Component {
       <Router>
         <Scene key='modal' component={Modal} >
           <Scene key='root'>
+            <Scene key='SearchBar' component={Search} initial={true} />
             <Scene key='tabbar' tabs={true} >
-              <Scene key='tab1' title='List View' icon={TabIcon} initial={true} >
+              <Scene key='tab1' title='List View' icon={TabIcon} >
                 <Scene key='List' title='List View Nav' component={List} />
               </Scene>
               <Scene key='tab2' title='Map View' icon={TabIcon}>
@@ -52,16 +49,6 @@ export default class instore extends Component {
           </Scene>
         </Scene>
       </Router>
-      // <NavigatorIOS
-      //   style={{
-      //     flex: 1
-      //   }}
-      //   initialRoute={{
-      //     component: Map,
-      //     title: 'Instore'
-      //   }}
-      //   // navigationBarHidden={true}
-      // />
     );
   }
 }

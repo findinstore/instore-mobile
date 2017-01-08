@@ -3,30 +3,43 @@ import {
   StyleSheet,
   Text,
   View,
-  ListView
+  ListView,
+  RefreshControl,
 } from 'react-native';
-import Tabs from 'react-native-tabs';
+import {
+  Actions
+} from 'react-native-router-flux';
 
 export class List extends Component {
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+      refreshing: false,
+      dataSource: ds.cloneWithRows(['row 1', 'row 2', 'row 3', 'row 4', 'row 5']),
     };
+  }
+
+  _onRefresh() {
+    this.setState({
+      refreshing: true,
+    });
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>This is the List Page</Text>
-        {/* <Tabs>
-          <Text name="test1">TestTab1</Text>
-          <Text name="test2">TestTab2</Text>
-          <Text name="test3">TestTab3</Text>
-          <Text name="test4">TestTab4</Text>
-          <Text name="test5">TestTab5</Text>
-        </Tabs> */}
+        <ListView
+          style={styles.listView}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh}
+            />
+          }
+          dataSource={this.state.dataSource}
+          renderRow={(rowData) => <Text style={styles.text} onPress={() => Actions.SearchBar}>{rowData}</Text>}
+        />
       </View>
     );
   }
@@ -35,18 +48,18 @@ export class List extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: 70,
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  listView: {
+    flex: 1,
+    backgroundColor: '#EEEEEE',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
+  text: {
+    marginLeft: 12,
     marginBottom: 5,
-  },
+    fontSize: 20,
+  }
 });
