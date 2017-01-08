@@ -17,7 +17,7 @@ export class List extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       refreshing: false,
-      dataSource: ds.cloneWithRows(['Nike Air Max Zero', 'Nike Huarache', 'Nike Roche Runs', 'Nike Roche Runs Flyknits', 'Nike Shox']),
+      dataSource: ds.cloneWithRows(['Nike Air Max Zero', 'Nike Huarache', 'Nike Roshe Runs', 'Nike Roshe Runs Flyknits', 'Nike Shox']),
     };
   }
 

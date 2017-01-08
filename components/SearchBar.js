@@ -12,7 +12,7 @@ export class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      placeholder: 'What are you searching for?',
+      placeholder: 'What\'s Instore for you?',
     };
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
@@ -40,5 +40,7 @@ const styles = StyleSheet.create({
   searchBar: {
     flex: 1,
     fontSize: 18,
+    fontFamily: 'Quicksand-Regular',
+    textAlign: 'center',
   },
 });

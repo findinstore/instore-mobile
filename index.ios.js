@@ -34,10 +34,10 @@ export default class instore extends Component {
   }
   render() {
     return (
-      <Router>
+      <Router navigationBarStyle={styles.navBar} titleStyle={styles.navTitle}>
         <Scene key='modal' component={Modal} >
           <Scene key='root'>
-            <Scene key='SearchBar' component={Search} initial={true} />
+            <Scene key='SearchBar' title='Welcome to Instore' component={Search} initial={true} />
             <Scene key='tabbar' tabs={true} >
               <Scene key='tab1' title='List View' icon={TabIcon} >
                 <Scene key='List' title='List View Nav' component={List} />
@@ -52,5 +52,16 @@ export default class instore extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  navBar: {
+    backgroundColor: '#05a4eb',
+  },
+  navTitle: {
+    color: 'white',
+    fontFamily: 'Quicksand-Bold',
+    fontSize: 18,
+  },
+});
 
 AppRegistry.registerComponent('instore', () => instore);

@@ -25,10 +25,12 @@ export class Search extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.searchContainer}>
-          <SearchBar />
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button style={styles.button} onPress={Actions.tabbar}>Search</Button>
+          <View style={styles.searchBarContainer}>
+            <SearchBar />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button style={styles.button} onPress={Actions.tabbar}>Search</Button>
+          </View>
         </View>
       </View>
     );
@@ -41,18 +43,29 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    padding: 30,
+    backgroundColor: 'white',
+    padding: 25,
   },
   searchContainer: {
-    flex: 3,
+    flex: 1,
+    flexDirection: 'row',
+  },
+  searchBarContainer: {
+    flex: 4,
+    borderRadius: 0,
+    borderColor: 'rgba(0, 0, 0, 0)',
+    borderBottomColor: '#F1F1F1',
+    borderBottomWidth: 1,
+    marginLeft: 0,
+    marginRight: 0,
   },
   buttonContainer: {
     flex: 1,
   },
   button: {
-    backgroundColor: 'blue',
     color: 'white',
+    backgroundColor: '#05a4eb',
+    fontFamily: 'Quicksand-Medium',
     fontSize: 18,
   },
 });
