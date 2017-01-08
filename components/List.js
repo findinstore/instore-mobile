@@ -5,6 +5,7 @@ import {
   View,
   ListView,
   RefreshControl,
+  TouchableHighlight,
 } from 'react-native';
 import {
   Actions
@@ -16,7 +17,7 @@ export class List extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       refreshing: false,
-      dataSource: ds.cloneWithRows(['row 1', 'row 2', 'row 3', 'row 4', 'row 5']),
+      dataSource: ds.cloneWithRows(['Nike Air Max Zero', 'Nike Huarache', 'Nike Roche Runs', 'Nike Roche Runs Flyknits', 'Nike Shox']),
     };
   }
 
@@ -29,17 +30,24 @@ export class List extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ListView
-          style={styles.listView}
-          refreshControl={
-            <RefreshControl
-              refreshing={this.state.refreshing}
-              onRefresh={this._onRefresh}
-            />
-          }
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Text style={styles.text} onPress={() => Actions.SearchBar}>{rowData}</Text>}
-        />
+        <View style={styles.productList}>
+          <ListView
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh}
+              />
+            }
+            dataSource={this.state.dataSource}
+            renderRow={(rowData) => {
+              return (
+                <View style={styles.listItem}>
+                  <Text style={styles.text} onPress={Actions.SearchBar}>{rowData}</Text>
+                </View>
+              );
+            }}
+          />
+        </View>
       </View>
     );
   }
@@ -48,18 +56,34 @@ export class List extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
-    marginTop: 70,
-    backgroundColor: '#F5FCFF',
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
-  listView: {
-    flex: 1,
-    backgroundColor: '#EEEEEE',
+  // listView: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   // marginTop: 63,
+  // },
+  listItem: {
+    flexDirection: 'column',
+    paddingLeft: 10,
+    margin: 10,
+    borderRadius: 0,
+    borderColor: 'rgba(0, 0, 0, 0)',
+    borderBottomColor: '#F1F1F1',
+    borderBottomWidth: 1,
+    marginLeft: 0,
+    marginRight: 0,
   },
   text: {
-    marginLeft: 12,
-    marginBottom: 5,
-    fontSize: 20,
-  }
+    flex: 1,
+    justifyContent: 'center',
+  },
+  productList: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 70,
+  },
 });

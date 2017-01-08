@@ -8,7 +8,7 @@ import {
   StyleSheet,
   View,
   Text,
-  NavigatorIOS
+  NavigatorIOS,
 } from 'react-native';
 import {
   Router,
