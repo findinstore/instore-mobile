@@ -11,7 +11,7 @@ import {
   Actions
 } from 'react-native-router-flux';
 
-export class storeList extends Component {
+export class StoreList extends Component {
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -41,7 +41,7 @@ export class storeList extends Component {
             dataSource={this.state.dataSource}
             renderRow={(rowData) => {
               return (
-                <TouchableHighlight style={styles.storeListItem} onPress={Actions.result} >
+                <TouchableHighlight style={styles.storeListItem} underlayColor='#f7fcff' onPress={Actions.result} >
                   <Text style={styles.text} >{rowData}</Text>
                 </TouchableHighlight>
               );
