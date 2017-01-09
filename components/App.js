@@ -8,6 +8,7 @@ import { Result } from './Result';
 import {
   StyleSheet,
   Text,
+  Image,
 } from 'react-native';
 import {
   Router,
@@ -37,14 +38,14 @@ const reducerCreate = params => {
 export default class App extends Component {
   render() {
     return (
-      <Router createReudcer={reducerCreate} navigationBarStyle={styles.navBar} titleStyle={styles.navTitle} leftButtonIconStyle={{tintColor: 'white'}} >
+      <Router createReducer={reducerCreate} navigationBarStyle={styles.navBar} titleStyle={styles.navTitle} leftButtonIconStyle={{tintColor: 'white'}} >
         <Scene key='modal' component={Modal} >
           <Scene key='root' >
             <Scene key='searchBar' title='1. Find a product' component={Search} initial={true} />
-            <Scene key='productList' title='2. Select a product' component={(props) => <ProductList {...props} />} />
-            <Scene key='storeList' title='3. Select a store' component={StoreList} onRight={() => Actions.map()} rightTitle='Map' rightButtonTextStyle={styles.navButtonTextStyle} />
-            <Scene key='map' title='Map View Nav' component={Map} backTitle='Store List' backButtonTextStyle={styles.navButtonTextStyle} />
-            <Scene key='result' title='4. Result' component={Result} backTitle='Store List' backButtonTextStyle={styles.navButtonTextStyle} />
+            <Scene key='productList' title='2. Select a product' component={(props) => <ProductList {...props} />} backTitle='Search' backButtonTextStyle={styles.navButtonTextStyle}/>
+            <Scene key='storeList' title='3. Select a store' component={StoreList} backTitle='Products' backButtonTextStyle={styles.navButtonTextStyle} onRight={() => Actions.map()} rightTitle='Map' rightButtonTextStyle={styles.navButtonTextStyle} />
+            <Scene key='map' title='Map View Nav' component={Map} backTitle='Stores' backButtonTextStyle={styles.navButtonTextStyle} />
+            <Scene key='result' title='4. Result' component={Result} backTitle='Stores' backButtonTextStyle={styles.navButtonTextStyle} />
             {/* <Scene key='tabbar' tabs={true} tabBarStyle={styles.tabBarStyle}>
               <Scene key='tab1' title='List View' icon={TabIcon} >
                 <Scene key='List' title='Results' component={List} onRight={() => Actions.tab2()} rightTitle='Map' rightButtonTextStyle={styles.rightButtonTextStyle}/>

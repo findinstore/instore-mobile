@@ -1,3 +1,6 @@
+// add product details
+// add stores
+
 import React, { Component } from 'react';
 import {
   StyleSheet,
