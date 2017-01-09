@@ -29,7 +29,7 @@ export class Search extends Component {
             <SearchBar />
           </View>
           <View style={styles.buttonContainer}>
-            <Button containerStyle={{borderRadius: 20}} style={styles.button} onPress={Actions.tabbar}>Search</Button>
+            <Button containerStyle={{borderRadius: 20}} style={styles.button} onPress={Actions.List}>Search</Button>
           </View>
         </View>
       </View>

@@ -41,9 +41,9 @@ export class List extends Component {
             dataSource={this.state.dataSource}
             renderRow={(rowData) => {
               return (
-                <View style={styles.listItem}>
-                  <Text style={styles.text} onPress={Actions.SearchBar}>{rowData}</Text>
-                </View>
+                <TouchableHighlight style={styles.listItem} onPress={Actions.SearchBar} >
+                  <Text style={styles.text} >{rowData}</Text>
+                </TouchableHighlight>
               );
             }}
           />
@@ -56,26 +56,20 @@ export class List extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    // flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
   },
-  // listView: {
-  //   flex: 1,
-  //   justifyContent: 'center',
-  //   // marginTop: 63,
-  // },
   listItem: {
     flexDirection: 'column',
-    paddingLeft: 10,
-    margin: 10,
+    padding: 20,
     borderRadius: 0,
     borderColor: 'rgba(0, 0, 0, 0)',
     borderBottomColor: '#F1F1F1',
     borderBottomWidth: 1,
-    marginLeft: 0,
-    marginRight: 0,
+    // marginLeft: 0,
+    // marginRight: 0,
   },
   text: {
     flex: 1,
@@ -84,6 +78,6 @@ const styles = StyleSheet.create({
   productList: {
     flex: 1,
     flexDirection: 'row',
-    marginTop: 70,
+    marginTop: 64,
   },
 });
