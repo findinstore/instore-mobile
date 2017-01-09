@@ -11,7 +11,7 @@ import {
   Actions
 } from 'react-native-router-flux';
 
-export class List extends Component {
+export class productList extends Component {
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -41,7 +41,7 @@ export class List extends Component {
             dataSource={this.state.dataSource}
             renderRow={(rowData) => {
               return (
-                <TouchableHighlight style={styles.listItem} onPress={Actions.SearchBar} >
+                <TouchableHighlight style={styles.productListItem} onPress={Actions.storeList} >
                   <Text style={styles.text} >{rowData}</Text>
                 </TouchableHighlight>
               );
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
-  listItem: {
+  productListItem: {
     flexDirection: 'column',
     padding: 20,
     borderRadius: 0,

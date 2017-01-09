@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Map } from './components/Map';
-import { List } from './components/List';
+import { productList } from './components/productList';
+import { storeList } from './components/storeList';
 import { Search } from './components/Search';
+import { Result } from './components/Result';
 
 import {
   AppRegistry,
@@ -41,9 +43,11 @@ export default class instore extends Component {
       <Router createReudcer={reducerCreate} navigationBarStyle={styles.navBar} titleStyle={styles.navTitle} leftButtonIconStyle={{tintColor: 'white'}} >
         <Scene key='modal' component={Modal} >
           <Scene key='root' >
-            <Scene key='SearchBar' component={Search} initial={true} />
-            <Scene key='List' title='Results' component={List} onRight={() => Actions.Map()} rightTitle='Map' rightButtonTextStyle={styles.rightButtonTextStyle} />
-            <Scene key='Map' title='Map View Nav' component={Map} backTitle='List' backButtonTextStyle={styles.backButtonTextStyle}/>
+            <Scene key='searchBar' title='1. Find a product' component={Search} initial={true} />
+            <Scene key='productList' title='2. Select a product' component={productList} />
+            <Scene key='storeList' title='3. Select a store' component={storeList} onRight={() => Actions.map()} rightTitle='Map' rightButtonTextStyle={styles.rightButtonTextStyle} />
+            <Scene key='map' title='Map View Nav' component={Map} backTitle='Store List' backButtonTextStyle={styles.backButtonTextStyle}/>
+            <Scene key='result' title='4. Result' component={Result} backTitle='Store List' backButtonTextStyle={styles.backButtonTextStyle}/>
             {/* <Scene key='tabbar' tabs={true} tabBarStyle={styles.tabBarStyle}>
               <Scene key='tab1' title='List View' icon={TabIcon} >
                 <Scene key='List' title='Results' component={List} onRight={() => Actions.tab2()} rightTitle='Map' rightButtonTextStyle={styles.rightButtonTextStyle}/>

@@ -6,13 +6,9 @@ import {
   Text,
   TouchableHighlight,
 } from 'react-native';
-import {
-  Actions
-} from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
-import {
-  SearchBar
-} from './SearchBar';
+import { SearchBar } from './SearchBar';
 
 export class Search extends Component {
   constructor(props) {
@@ -29,7 +25,7 @@ export class Search extends Component {
             <SearchBar />
           </View>
           <View style={styles.buttonContainer}>
-            <Button containerStyle={{borderRadius: 20}} style={styles.button} onPress={Actions.List}>Search</Button>
+            <Button containerStyle={{borderRadius: 20}} style={styles.button} onPress={Actions.productList}>Search</Button>
           </View>
         </View>
       </View>
