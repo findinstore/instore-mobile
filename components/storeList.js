@@ -22,6 +22,8 @@ export class StoreList extends Component {
       refreshing: false,
       dataSource: ds.cloneWithRows(['Foot Locker', 'Finish Line', 'Journeys', 'Shoe Palace', 'Nike']),
     };
+
+    this._onRefresh = this._onRefresh.bind(this);
   }
 
   componentWillMount() {
@@ -42,6 +44,12 @@ export class StoreList extends Component {
       <View style={styles.container}>
         <View style={styles.storeList}>
           <ListView
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh}
+              />
+            }
             dataSource={this.state.dataSource}
             renderHeader={() => <ProductDescription selected={selectedProduct} />}
             renderRow={(rowData) => {

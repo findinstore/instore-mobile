@@ -14,17 +14,35 @@ export class Search extends Component {
     super(props);
     this.state = {
       searchText: '',
+      disabled: true,
     };
 
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleChangeText = this.handleChangeText.bind(this);
   }
 
   handleKeyDown(e) {
-    if (e.nativeEvent.key === 'Enter') {
+    if (e.nativeEvent.key === 'Enter' && this.state.searchText.length > 0) {
       Actions.productList({
         searchText: this.state.searchText
       });
     }
+  }
+
+  handleChangeText(text) {
+    if (this.state.searchText.length === 0) {
+      this.setState({
+        disabled: true,
+      });
+    }
+    if (this.state.searchText.length > 0) {
+      this.setState({
+        disabled: false,
+      });
+    }
+    this.setState({
+      searchText: text,
+    });
   }
 
   render() {
@@ -34,7 +52,7 @@ export class Search extends Component {
           <View style={styles.searchBarContainer}>
             <TextInput
               style={styles.searchBar}
-              onChangeText={(text) => this.setState({ searchText: text })}
+              onChangeText={(text) => this.handleChangeText(text)}
               onKeyPress={this.handleKeyDown}
               placeholder={'What\'s Instore for you?'}
               value={this.state.searchText}
@@ -87,4 +105,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Quicksand-Medium',
     fontSize: 18,
   },
+  // buttonDisabled: {
+  //   backgroundColor: '#747a7c',
+  //   fontFamily: 'Quicksand-Medium',
+  //   fontSize: 18,
+  // },
 });

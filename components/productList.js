@@ -19,6 +19,8 @@ export class ProductList extends Component {
       refreshing: false,
       dataSource: ds.cloneWithRows(['Nike Air Max Zero', 'Nike Huarache', 'Nike Roshe Runs', 'Nike Roshe Runs Flyknits', 'Nike Shox']),
     };
+
+    this._onRefresh = this._onRefresh.bind(this);
   }
 
   componentWillMount() {
