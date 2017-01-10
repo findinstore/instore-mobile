@@ -10,9 +10,9 @@ import {
   RefreshControl,
   TouchableHighlight,
 } from 'react-native';
-import {
-  Actions
-} from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
+import { Result } from './Result';
+import { ProductDescription } from './ProductDescription';
 
 export class StoreList extends Component {
   constructor(props) {
@@ -35,13 +35,8 @@ export class StoreList extends Component {
       <View style={styles.container}>
         <View style={styles.storeList}>
           <ListView
-            refreshControl={
-              <RefreshControl
-                refreshing={this.state.refreshing}
-                onRefresh={this._onRefresh}
-              />
-            }
             dataSource={this.state.dataSource}
+            renderHeader={() => <ProductDescription />}
             renderRow={(rowData) => {
               return (
                 <TouchableHighlight style={styles.storeListItem} underlayColor='#f7fcff' onPress={Actions.result} >
@@ -49,6 +44,7 @@ export class StoreList extends Component {
                 </TouchableHighlight>
               );
             }}
+            renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
           />
         </View>
       </View>
@@ -68,11 +64,16 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     padding: 20,
     borderRadius: 0,
-    borderColor: 'rgba(0, 0, 0, 0)',
-    borderBottomColor: '#F1F1F1',
-    borderBottomWidth: 1,
+    // borderColor: 'rgba(0, 0, 0, 0)',
+    // borderBottomColor: '#F1F1F1',
+    // borderBottomWidth: 1,
     // marginLeft: 0,
     // marginRight: 0,
+  },
+  separator: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: '#F1F1F1',
   },
   text: {
     flex: 1,

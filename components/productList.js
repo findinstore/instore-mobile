@@ -21,6 +21,12 @@ export class ProductList extends Component {
     };
   }
 
+  componentDidMount() {
+    if (this.props.searchText.length > 0) {
+      Actions.refresh({title: 'Results for ' + this.props.searchText});
+    }
+  }
+
   _onRefresh() {
     this.setState({
       refreshing: true,

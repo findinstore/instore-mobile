@@ -41,10 +41,10 @@ export default class App extends Component {
       <Router createReducer={reducerCreate} navigationBarStyle={styles.navBar} titleStyle={styles.navTitle} leftButtonIconStyle={{tintColor: 'white'}} >
         <Scene key='modal' component={Modal} >
           <Scene key='root' >
-            <Scene key='searchBar' title='1. Find a product' component={Search} initial={true} />
-            <Scene key='productList' title='2. Select a product' component={(props) => <ProductList {...props} />} backTitle='Search' backButtonTextStyle={styles.navButtonTextStyle}/>
-            <Scene key='storeList' title='3. Select a store' component={StoreList} backTitle='Products' backButtonTextStyle={styles.navButtonTextStyle} onRight={() => Actions.map()} rightTitle='Map' rightButtonTextStyle={styles.navButtonTextStyle} />
-            <Scene key='map' title='Map View Nav' component={Map} backTitle='Stores' backButtonTextStyle={styles.navButtonTextStyle} />
+            <Scene key='search' title='1. Find a product' component={Search} initial={true} />
+            <Scene key='productList' title='Results' component={ProductList} backTitle='Search' backButtonTextStyle={styles.navButtonTextStyle}/>
+            <Scene key='storeList' title='3. Pick a store' component={StoreList} backTitle='Products' backButtonTextStyle={styles.navButtonTextStyle} onRight={() => Actions.map()} rightTitle='Map' rightButtonTextStyle={styles.navButtonTextStyle} />
+            <Scene key='map' title='Map' component={Map} backTitle='Stores' backButtonTextStyle={styles.navButtonTextStyle} />
             <Scene key='result' title='4. Result' component={Result} backTitle='Stores' backButtonTextStyle={styles.navButtonTextStyle} />
             {/* <Scene key='tabbar' tabs={true} tabBarStyle={styles.tabBarStyle}>
               <Scene key='tab1' title='List View' icon={TabIcon} >
