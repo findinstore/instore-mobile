@@ -42,12 +42,12 @@ export class ProductList extends Component {
       <View style={styles.container}>
         <View style={styles.productList}>
           <ListView
-            refreshControl={
-              <RefreshControl
-                refreshing={this.state.refreshing}
-                onRefresh={this._onRefresh}
-              />
-            }
+            // refreshControl={
+            //   <RefreshControl
+            //     refreshing={this.state.refreshing}
+            //     onRefresh={this._onRefresh}
+            //   />
+            // }
             dataSource={this.state.dataSource}
             renderRow={(rowData, sectionID, rowID) => {
               return (
@@ -67,7 +67,6 @@ export class ProductList extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
@@ -79,8 +78,6 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0, 0, 0, 0)',
     borderBottomColor: '#F1F1F1',
     borderBottomWidth: 1,
-    // marginLeft: 0,
-    // marginRight: 0,
   },
   text: {
     flex: 1,
