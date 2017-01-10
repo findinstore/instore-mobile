@@ -21,9 +21,11 @@ export class ProductList extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.props.searchText.length > 0) {
-      Actions.refresh({title: 'Results for ' + this.props.searchText});
+      Actions.refresh({
+        title: 'Results for ' + this.props.searchText
+      });
     }
   }
 
@@ -45,9 +47,10 @@ export class ProductList extends Component {
               />
             }
             dataSource={this.state.dataSource}
-            renderRow={(rowData) => {
+            renderRow={(rowData, sectionID, rowID) => {
               return (
-                <TouchableHighlight style={styles.productListItem} underlayColor='#f7fcff' onPress={Actions.storeList} >
+                <TouchableHighlight style={styles.productListItem} underlayColor='#f7fcff' onPress={() => Actions.storeList({selectedProduct: rowData})} >
+
                   <Text style={styles.text} >{rowData}</Text>
                 </TouchableHighlight>
               );

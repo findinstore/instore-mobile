@@ -19,7 +19,7 @@ export class ProductDescription extends Component {
           <Text style={styles.productDescription}>Product Detail 3</Text>
         </View>
         <View style={styles.storeListTitleContainer}>
-          <Text style={styles.storeListTitle}>Stores that carry : 'Insert Product'</Text>
+          <Text style={styles.storeListTitle}>Stores that carry: {this.props.selected}</Text>
         </View>
       </View>
     );

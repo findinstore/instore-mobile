@@ -24,6 +24,12 @@ export class StoreList extends Component {
     };
   }
 
+  componentWillMount() {
+    Actions.refresh({
+      title: this.props.selectedProduct
+    });
+  }
+
   _onRefresh() {
     this.setState({
       refreshing: true,
@@ -31,12 +37,13 @@ export class StoreList extends Component {
   }
 
   render() {
+    let selectedProduct = this.props.selectedProduct;
     return (
       <View style={styles.container}>
         <View style={styles.storeList}>
           <ListView
             dataSource={this.state.dataSource}
-            renderHeader={() => <ProductDescription />}
+            renderHeader={() => <ProductDescription selected={selectedProduct} />}
             renderRow={(rowData) => {
               return (
                 <TouchableHighlight style={styles.storeListItem} underlayColor='#f7fcff' onPress={Actions.result} >

@@ -21,7 +21,9 @@ export class Search extends Component {
 
   handleKeyDown(e) {
     if (e.nativeEvent.key === 'Enter') {
-      Actions.productList();
+      Actions.productList({
+        searchText: this.state.searchText
+      });
     }
   }
 
@@ -33,7 +35,7 @@ export class Search extends Component {
             <TextInput
               style={styles.searchBar}
               onChangeText={(text) => this.setState({ searchText: text })}
-              onKeyPress={this.state.handleKeyDown}
+              onKeyPress={this.handleKeyDown}
               placeholder={'What\'s Instore for you?'}
               value={this.state.searchText}
               editable={true}

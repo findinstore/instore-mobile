@@ -41,7 +41,7 @@ export default class App extends Component {
       <Router createReducer={reducerCreate} navigationBarStyle={styles.navBar} titleStyle={styles.navTitle} leftButtonIconStyle={{tintColor: 'white'}} >
         <Scene key='modal' component={Modal} >
           <Scene key='root' >
-            <Scene key='search' title='1. Find a product' component={Search} initial={true} />
+            <Scene key='search' component={Search} initial={true} />
             <Scene key='productList' title='Results' component={ProductList} backTitle='Search' backButtonTextStyle={styles.navButtonTextStyle}/>
             <Scene key='storeList' title='3. Pick a store' component={StoreList} backTitle='Products' backButtonTextStyle={styles.navButtonTextStyle} onRight={() => Actions.map()} rightTitle='Map' rightButtonTextStyle={styles.navButtonTextStyle} />
             <Scene key='map' title='Map' component={Map} backTitle='Stores' backButtonTextStyle={styles.navButtonTextStyle} />
