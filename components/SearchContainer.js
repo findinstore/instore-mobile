@@ -19,12 +19,13 @@ export class SearchContainer extends Component {
 
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleChangeText = this.handleChangeText.bind(this);
+    // this.fetchProducts = this.fetchProducts.bind(this);
   }
 
   handleKeyDown(e) {
     if (e.nativeEvent.key === 'Enter' && this.state.searchText.length > 0) {
       Actions.productList({
-        searchText: this.state.searchText
+        searchText: this.state.searchText,
       });
     }
   }
@@ -45,6 +46,22 @@ export class SearchContainer extends Component {
       searchText: text,
     });
   }
+
+  // fetchProducts(this.state.searchText) {
+  //   fetch('instore/products?product=' + ${this.state.searchText}, {
+  //     method: 'GET',
+  //   })
+  //   .then((res) => res.json())
+  //   .then((resData) => {
+  //     Actions.productList({
+  //       searchText: this.state.searchText,
+  //       searchResults: resData,
+  //     });
+  //   })
+  //   .catch((err) => {
+  //     console.warn(error);
+  //   });
+  // }
 
   render() {
     return (

@@ -12,31 +12,31 @@ export class ProductDetails extends Component {
     return (
       <View style={styles.container}>
         <Image style={styles.image} source={require('./instore-logo-black.png')} />
-        <View style={styles.productDetailsContainer} >
-          <Text style={styles.productDescription} >
+        <View style={styles.productDetailsContainer}>
+          <Text style={styles.productDescription}>
             Before the Air Max 1, there was the Nike Air Max Zero
           </Text>
-          <View style={styles.productDetailContainer} >
+          <View style={styles.productDetailContainer}>
             <Text>{'\u2022'}</Text>
-            <Text style={styles.productDetail} >
+            <Text style={styles.productDetail}>
             Upper consists of a combination of full textile, molded skin overlays and slip-on bootie fit system to provide lightweight comfort
             </Text>
           </View>
-          <View style={styles.productDetailContainer} >
+          <View style={styles.productDetailContainer}>
             <Text>{'\u2022'}</Text>
-            <Text style={styles.productDetail} >
+            <Text style={styles.productDetail}>
             Durable IU foam with visible heel air-sole unit gives superior cushioning
             </Text>
           </View>
           <View style={styles.productDetailContainer}>
             <Text>{'\u2022'}</Text>
-            <Text style={styles.productDetail} >
+            <Text style={styles.productDetail}>
             Outsole is rubber in toe and heel to give traction on a variety of surfaces
             </Text>
           </View>
         </View>
-        <View style={styles.storeListTitleContainer} >
-          <Text style={styles.storeListTitle} >Stores that carry: {this.props.selected}</Text>
+        <View style={styles.storeListTitleContainer}>
+          <Text style={styles.storeListTitle}>Stores that carry: {this.props.selected}</Text>
         </View>
       </View>
     );

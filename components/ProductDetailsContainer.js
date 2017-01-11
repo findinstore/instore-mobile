@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { ProductDetails } from './ProductDetails';
-import { Result } from './Result';
+import { StoreListing } from './StoreListing';
 
 export class ProductDetailsContainer extends Component {
   constructor(props) {
@@ -53,11 +53,12 @@ export class ProductDetailsContainer extends Component {
             // }
             dataSource={this.state.dataSource}
             renderHeader={() => <ProductDetails selected={selectedProduct} />}
-            renderRow={(rowData) => {
+            renderRow={(storeData) => {
+              // <TouchableHighlight style={styles.storeListItem} underlayColor='#f7fcff' onPress={Actions.result}>
+              // <Text style={styles.text}>{storeData}</Text>
+              // </TouchableHighlight>
               return (
-                <TouchableHighlight style={styles.storeListItem} underlayColor='#f7fcff' onPress={Actions.result} >
-                  <Text style={styles.text} >{rowData}</Text>
-                </TouchableHighlight>
+                <StoreListing storeData={storeData} />
               );
             }}
             renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
@@ -85,10 +86,10 @@ const styles = StyleSheet.create({
     height: StyleSheet.hairlineWidth,
     backgroundColor: '#F1F1F1',
   },
-  text: {
-    flex: 1,
-    fontFamily: 'Quicksand-Regular',
-  },
+  // text: {
+  //   flex: 1,
+  //   fontFamily: 'Quicksand-Regular',
+  // },
   storeList: {
     flex: 1,
     flexDirection: 'row',

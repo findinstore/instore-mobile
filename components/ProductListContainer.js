@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { ProductListing } from './ProductListing';
+
 import {
   StyleSheet,
   Text,
@@ -17,7 +19,7 @@ export class ProductListContainer extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       refreshing: false,
-      dataSource: ds.cloneWithRows(['Nike Air Max Zero', 'Nike Huarache', 'Nike Roshe Runs', 'Nike Roshe Runs Flyknits', 'Nike Shox']),
+      dataSource: ds.cloneWithRows(['Nike Air Max Zero', 'Nike Huarache', 'Nike Roshe Runs', 'Nike Roshe Runs Flyknits', 'Nike Shox', 'Nike Air Max Zero', 'Nike Huarache', 'Nike Roshe Runs', 'Nike Roshe Runs Flyknits', 'Nike Shox']),
     };
 
     this._onRefresh = this._onRefresh.bind(this);
@@ -26,7 +28,7 @@ export class ProductListContainer extends Component {
   componentWillMount() {
     if (this.props.searchText.length > 0) {
       Actions.refresh({
-        title: 'Results for ' + this.props.searchText
+        title: 'Results for ' + this.props.searchText,
       });
     }
   }
@@ -51,12 +53,13 @@ export class ProductListContainer extends Component {
             dataSource={this.state.dataSource}
             renderRow={(rowData, sectionID, rowID) => {
               return (
-                <TouchableHighlight style={styles.productListItem} underlayColor='#f7fcff' onPress={() => Actions.storeList({selectedProduct: rowData})} >
-
-                  <Text style={styles.text} >{rowData}</Text>
-                </TouchableHighlight>
+                // <TouchableHighlight style={styles.productListItem} underlayColor='#f7fcff' onPress={() => Actions.productDetails({selectedProduct: rowData})} >
+                // <Text style={styles.text} >{rowData}</Text>
+                // </TouchableHighlight>
+                <ProductListing rowData={rowData}/>
               );
             }}
+            renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
           />
         </View>
       </View>
@@ -86,6 +89,11 @@ const styles = StyleSheet.create({
   productList: {
     flex: 1,
     flexDirection: 'row',
-    marginTop: 64,
+    paddingTop: 64,
+  },
+  separator: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: '#F1F1F1',
   },
 });
