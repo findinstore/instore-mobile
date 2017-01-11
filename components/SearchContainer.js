@@ -9,7 +9,7 @@ import {
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 
-export class Search extends Component {
+export class SearchContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,16 +30,17 @@ export class Search extends Component {
   }
 
   handleChangeText(text) {
-    if (this.state.searchText.length === 0) {
-      this.setState({
-        disabled: true,
-      });
-    }
-    if (this.state.searchText.length > 0) {
-      this.setState({
-        disabled: false,
-      });
-    }
+    // TODO: disable button on empty string
+    // if (this.state.searchText.length === 0) {
+    //   this.setState({
+    //     disabled: true,
+    //   });
+    // }
+    // if (this.state.searchText.length > 0) {
+    //   this.setState({
+    //     disabled: false,
+    //   });
+    // }
     this.setState({
       searchText: text,
     });

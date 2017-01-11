@@ -7,12 +7,12 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-export class ProductDescription extends Component {
+export class ProductDetails extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Image style={styles.image} source={require('./instore-logo-black.png')} />
-        <View style={styles.productDescriptionContainer} >
+        <View style={styles.productDetailsContainer} >
           <Text style={styles.productDescription} >
             Before the Air Max 1, there was the Nike Air Max Zero
           </Text>
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     height: 100,
     width: 200,
   },
-  productDescriptionContainer: {
+  productDetailsContainer: {
     flex: 1,
   },
   productDescription: {

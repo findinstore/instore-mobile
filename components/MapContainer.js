@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import MapView from 'react-native-maps';
 
-export class Map extends Component {
+export class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {

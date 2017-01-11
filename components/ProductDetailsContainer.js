@@ -1,3 +1,6 @@
+// add product details
+// add stores
+
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -7,28 +10,26 @@ import {
   RefreshControl,
   TouchableHighlight,
 } from 'react-native';
-import {
-  Actions
-} from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
+import { ProductDetails } from './ProductDetails';
+import { Result } from './Result';
 
-export class ProductList extends Component {
+export class ProductDetailsContainer extends Component {
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       refreshing: false,
-      dataSource: ds.cloneWithRows(['Nike Air Max Zero', 'Nike Huarache', 'Nike Roshe Runs', 'Nike Roshe Runs Flyknits', 'Nike Shox']),
+      dataSource: ds.cloneWithRows(['Foot Locker', 'Finish Line', 'Journeys', 'Shoe Palace', 'Nike']),
     };
 
     this._onRefresh = this._onRefresh.bind(this);
   }
 
   componentWillMount() {
-    if (this.props.searchText.length > 0) {
-      Actions.refresh({
-        title: 'Results for ' + this.props.searchText
-      });
-    }
+    Actions.refresh({
+      title: this.props.selectedProduct
+    });
   }
 
   _onRefresh() {
@@ -38,10 +39,12 @@ export class ProductList extends Component {
   }
 
   render() {
+    let selectedProduct = this.props.selectedProduct;
     return (
       <View style={styles.container}>
-        <View style={styles.productList}>
+        <View style={styles.storeList}>
           <ListView
+            // TODO: to enable refreshing in the future
             // refreshControl={
             //   <RefreshControl
             //     refreshing={this.state.refreshing}
@@ -49,14 +52,15 @@ export class ProductList extends Component {
             //   />
             // }
             dataSource={this.state.dataSource}
-            renderRow={(rowData, sectionID, rowID) => {
+            renderHeader={() => <ProductDetails selected={selectedProduct} />}
+            renderRow={(rowData) => {
               return (
-                <TouchableHighlight style={styles.productListItem} underlayColor='#f7fcff' onPress={() => Actions.storeList({selectedProduct: rowData})} >
-
+                <TouchableHighlight style={styles.storeListItem} underlayColor='#f7fcff' onPress={Actions.result} >
                   <Text style={styles.text} >{rowData}</Text>
                 </TouchableHighlight>
               );
             }}
+            renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
           />
         </View>
       </View>
@@ -71,19 +75,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
-  productListItem: {
+  storeListItem: {
     flexDirection: 'column',
     padding: 20,
     borderRadius: 0,
-    borderColor: 'rgba(0, 0, 0, 0)',
-    borderBottomColor: '#F1F1F1',
-    borderBottomWidth: 1,
+  },
+  separator: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: '#F1F1F1',
   },
   text: {
     flex: 1,
     fontFamily: 'Quicksand-Regular',
   },
-  productList: {
+  storeList: {
     flex: 1,
     flexDirection: 'row',
     marginTop: 64,
