@@ -6,6 +6,7 @@ import {
   Image,
   Text,
   View,
+  ListView,
 } from 'react-native';
 import {
   Actions,
@@ -24,32 +25,63 @@ export class StoreDetailsContainer extends Component {
 
   render() {
     return (
+      // TODO: create a ListView instead of a static view
       <View style={styles.container}>
         <Image style={styles.image} source={require('./instore-logo-black.png')} />
         <View style={styles.storeDetailsContainer}>
           <Text style={styles.storeDescription}>
-            Place description here
+            Store description here
           </Text>
           <View style={styles.storeDetailContainer}>
-            <Text>{'\u2022'}</Text>
+            {/* <Text>{'\u2022'}</Text> */}
             <Text style={styles.storeDetail}>
-            Upper consists of a combination of full textile, molded skin overlays and slip-on bootie fit system to provide lightweight comfort
+              Street Address 1: 52 Russ St, San Francisco, CA 94103
             </Text>
           </View>
           <View style={styles.storeDetailContainer}>
-            <Text>{'\u2022'}</Text>
+            {/* <Text>{'\u2022'}</Text> */}
             <Text style={styles.storeDetail}>
-            Durable IU foam with visible heel air-sole unit gives superior cushioning
+              Street Address 2: 'INSERT STREET ADDRESS 2 HERE'
             </Text>
           </View>
           <View style={styles.storeDetailContainer}>
-            <Text>{'\u2022'}</Text>
+            {/* <Text>{'\u2022'}</Text> */}
             <Text style={styles.storeDetail}>
-            Outsole is rubber in toe and heel to give traction on a variety of surfaces
+              Phone Number: 'INSERT PHONE NUMBER HERE'
+            </Text>
+          </View>
+          <View style={styles.storeDetailContainer}>
+            {/* <Text>{'\u2022'}</Text> */}
+            <Text style={styles.storeDetail}>
+              Store Hours: 'INSERT STORE HOURS HERE'
             </Text>
           </View>
         </View>
       </View>
+      // <View style={styles.container}>
+      //   <View style={styles.storeList}>
+      //     <ListView
+      //       // TODO: to enable refreshing in the future
+      //       // refreshControl={
+      //       //   <RefreshControl
+      //       //     refreshing={this.state.refreshing}
+      //       //     onRefresh={this._onRefresh}
+      //       //   />
+      //       // }
+      //       dataSource={this.props.selectedStore}
+      //       renderHeader={() => <ProductDetails />}
+      //       renderRow={(storeData) => {
+      //         // <TouchableHighlight style={styles.storeListItem} underlayColor='#f7fcff' onPress={Actions.result}>
+      //         // <Text style={styles.text}>{storeData}</Text>
+      //         // </TouchableHighlight>
+      //         return (
+      //           <StoreListing storeData={storeData} />
+      //         );
+      //       }}
+      //       renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+      //     />
+      //   </View>
+      // </View>
     );
   }
 }
@@ -61,27 +93,25 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   image: {
-    flexDirection: 'row',
     alignSelf: 'center',
     height: 100,
     width: 200,
   },
   storeDetailsContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
+    // flex: 1,
+    // alignSelf: 'flex-start',
   },
   storeDescription: {
-    // flex: 1,
+    alignSelf: 'center',
     fontFamily: 'Quicksand-Regular',
     fontSize: 12,
-    paddingLeft: 10
   },
   storeDetailContainer: {
-    flex: 1,
     flexDirection: 'row',
+    padding: 10
   },
   storeDetail: {
-    // flex: 1,
+    flex: 1,
     fontFamily: 'Quicksand-Regular',
     textAlign: 'justify',
   },
